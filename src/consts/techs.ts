@@ -1,0 +1,15 @@
+export const TECHS = [
+  'TypeScript',
+  'Go',
+  'PHP',
+  'React.js',
+  'Vue.js',
+  'Astro.js',
+  'Next.js',
+  'Nest.js',
+  'Laravel',
+  'Docker',
+  'CloudFlare',
+  'AWS',
+  'GCP',
+];
