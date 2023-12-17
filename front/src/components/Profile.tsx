@@ -5,6 +5,7 @@ import {
   Divider,
   Flex,
   Group,
+  Image,
   Stack,
   Text,
   Title,
@@ -25,7 +26,9 @@ export const Profile = () => {
   return (
     <Group gap="xl" justify={isMobile ? 'center' : 'space-between'}>
       <Stack align="center">
-        <Avatar radius={100} size="xl" />
+        <Avatar radius={100} size={isMobile ? 'xl' : 120}>
+          <Image src="/thumbnail.jpeg" radius={100} />
+        </Avatar>
         <Stack gap="xs" align="center">
           <Title order={2}>uchi</Title>
           <Text size="sm">3年目のシステムエンジニア</Text>
