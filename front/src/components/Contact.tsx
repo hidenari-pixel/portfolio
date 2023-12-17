@@ -82,6 +82,7 @@ export const ContactForm = () => {
                 required
                 minRows={6}
                 label="内容"
+                description="最低10文字以上を入力してください"
                 {...form.getInputProps('message')}
               />
             </Stack>
