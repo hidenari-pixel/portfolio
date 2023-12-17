@@ -1,12 +1,4 @@
-import {
-  Box,
-  Stack,
-  Text,
-  Timeline,
-  Title,
-  getFontSize,
-  getThemeColor,
-} from '@mantine/core';
+import { Box, Stack, Text, Timeline, Title, getFontSize } from '@mantine/core';
 import { BadgesGroup } from './BadgesGroup';
 import { CAREERS } from '../consts/careers';
 import { useColor } from '../hooks/useColor';
