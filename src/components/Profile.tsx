@@ -12,12 +12,15 @@ import {
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 import { SiQiita, SiZenn } from 'react-icons/si';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { useColor } from '../hooks/useColor';
 import { TECHS } from '../consts/techs';
 import { UnStyledLink } from './UnStyledLink';
 import { BadgesGroup } from './BadgesGroup';
 
 export const Profile = () => {
   const isMobile = useIsMobile();
+
+  const { getColor } = useColor();
 
   return (
     <Group gap="xl" justify={isMobile ? 'center' : 'space-between'}>
@@ -36,7 +39,9 @@ export const Profile = () => {
           <Text>システム開発の業務委託などもやっています。</Text>
           <Text>
             お仕事の依頼などはX(旧Twitter)のDMまたは
-            <a href="/contact">こちら</a>
+            <a href="/contact" style={{ color: getColor('blue') }}>
+              こちら
+            </a>
             にてお願いします。
           </Text>
         </Box>

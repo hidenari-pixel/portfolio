@@ -6,13 +6,13 @@ import {
   Title,
   getFontSize,
   getThemeColor,
-  useMantineTheme,
 } from '@mantine/core';
 import { BadgesGroup } from './BadgesGroup';
 import { CAREERS } from '../consts/careers';
+import { useColor } from '../hooks/useColor';
 
 export const Careers = () => {
-  const theme = useMantineTheme();
+  const { getColor } = useColor();
 
   return (
     <Stack w="100%">
@@ -29,13 +29,14 @@ export const Careers = () => {
       >
         {CAREERS.map(({ title, period, techs, description }) => (
           <Timeline.Item
+            key={title}
             styles={{
               itemTitle: {
                 fontSize: getFontSize('lg'),
                 fontWeight: 'bold',
               },
               itemBullet: {
-                background: getThemeColor('indigo', theme),
+                background: getColor('indigo'),
                 border: 'none',
               },
             }}

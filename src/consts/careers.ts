@@ -20,7 +20,7 @@ export const CAREERS = [
       'Spring Boot',
       'TypeScript',
       'React.js',
-      'Vue',
+      'Vue.js',
       'Docker',
       'PostgreSQL',
       'AWS',

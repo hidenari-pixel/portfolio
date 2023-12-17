@@ -7,16 +7,21 @@ import {
   Flex,
   Group,
   MantineProvider,
+  NavLink,
+  Stack,
   Text,
   Title,
   getThemeColor,
   useMantineTheme,
 } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
+import { GoChevronRight } from 'react-icons/go';
 import React, { useState } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
-import '@mantine/core/styles.css';
 import { UnStyledLink } from './UnStyledLink';
+import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 
 type Props = {
   children: React.ReactNode;
@@ -31,6 +36,7 @@ export const Layout = ({ children }: Props) => {
 
   return (
     <MantineProvider>
+      <Notifications position="top-right" />
       <AppShell
         header={{ height: 60 }}
         navbar={{
@@ -60,7 +66,20 @@ export const Layout = ({ children }: Props) => {
             <HeaderLinks />
           </Flex>
         </AppShell.Header>
-        <AppShell.Navbar hiddenFrom="sm">Navbar</AppShell.Navbar>
+        <AppShell.Navbar hiddenFrom="sm">
+          <Stack align="center" justify="center" py="xl" px="xl">
+            <NavLink
+              href="/"
+              label="ホーム"
+              rightSection={<GoChevronRight />}
+            />
+            <NavLink
+              href="/contact"
+              label="お問い合わせ"
+              rightSection={<GoChevronRight />}
+            />
+          </Stack>
+        </AppShell.Navbar>
         <AppShell.Main pt={120}>
           <Container size="md">{children}</Container>
         </AppShell.Main>
