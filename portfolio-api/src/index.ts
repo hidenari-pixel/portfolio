@@ -32,7 +32,28 @@ type ReqBody = {
 	message: string;
 };
 
+class ServerError extends Error {
+	constructor(message?: string) {
+		super(message);
+		this.name = 'Server Error';
+	}
+}
+
 export default {
+	async postSlack({ name, email, message }: ReqBody, url: string) {
+		try {
+			const res = await fetch(url, {
+				method: 'POST',
+				body: JSON.stringify({
+					text: `氏名: ${name}\n\nメールアドレス: ${email}\n\n内容: ${message}`,
+				}),
+			});
+			return res;
+		} catch (e) {
+			throw new ServerError();
+		}
+	},
+
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		if (request.method !== 'POST') {
 			return new Response('POST以外のメソッドはサポートされていません', { status: 400 });
@@ -52,14 +73,13 @@ export default {
 				throw new Error();
 			}
 
-			const res = await fetch(env.SLACK_WEBHOOK_URL, {
-				method: 'POST',
-				body: JSON.stringify({
-					text: `氏名: ${name}\n\nメールアドレス: ${email}\n\n内容: ${message}`,
-				}),
-			});
+			const res = this.postSlack({ name, email, message }, env.SLACK_WEBHOOK_URL);
+
 			return res;
 		} catch (e) {
+			if (e instanceof ServerError) {
+				return new Response('サーバー側でエラーが発生しました', { status: 500 });
+			}
 			return new Response('不適切なリクエストパラメーターです', { status: 400 });
 		}
 	},
