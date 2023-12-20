@@ -25,12 +25,11 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-3T333N2PVG"></script>
-		<script>
+		<script type=text/partytown src="https://www.googletagmanager.com/gtag/js?id=G-3T333N2PVG"></script>
+		<script type=text/partytown>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
-
 			gtag('config', 'G-3T333N2PVG');
 		</script>
 		<ColorSchemeScript client:only />
