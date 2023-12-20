@@ -36,7 +36,7 @@ export const Layout = ({ children }: Props) => {
 
   return (
     <MantineProvider>
-      <Notifications position="top-right" />
+      <Notifications position={isMobile ? 'top-center' : 'top-right'} />
       <AppShell
         header={{ height: 60 }}
         navbar={{
